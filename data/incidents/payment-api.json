@@ -1,0 +1,48 @@
+{
+  "scenario": "payment-api-elevated-latency",
+  "service": "payment-api",
+  "events": [
+    {
+      "timestamp": "2026-10-20T12:03:00Z",
+      "type": "metric",
+      "name": "http_5xx_rate",
+      "value": 0.2,
+      "unit": "percent"
+    },
+    {
+      "timestamp": "2026-10-20T12:04:30Z",
+      "type": "deployment",
+      "version": "1.8.2",
+      "environment": "production",
+      "actor": "release-bot"
+    },
+    {
+      "timestamp": "2026-10-20T12:05:00Z",
+      "type": "log",
+      "severity": "error",
+      "message": "upstream inventory request timed out",
+      "trace_id": "trace-0001"
+    },
+    {
+      "timestamp": "2026-10-20T12:05:10Z",
+      "type": "metric",
+      "name": "http_5xx_rate",
+      "value": 8.4,
+      "unit": "percent"
+    },
+    {
+      "timestamp": "2026-10-20T12:05:20Z",
+      "type": "metric",
+      "name": "p95_latency",
+      "value": 2400,
+      "unit": "ms"
+    },
+    {
+      "timestamp": "2026-10-20T12:05:30Z",
+      "type": "log",
+      "severity": "error",
+      "message": "payment request failed after retry limit",
+      "trace_id": "trace-0002"
+    }
+  ]
+}
