@@ -1,37 +1,37 @@
 # AI SRE Copilot
 
-שלד לימודי לחקירת תקלות על בסיס ראיות. בשלב הראשון המערכת מקבלת אירועים סינתטיים ומציגה אותם לפי ציר זמן; היא אינה משנה מערכות, ועדיין אינה מתחברת למודל AI או ל־RAG.
+An educational scaffold for evidence-based incident investigation. In this first stage, the system takes synthetic events and displays them on a timeline. It does not make changes to any systems, and it does not yet connect to an AI model or use RAG.
 
-## למה Python ו־JSON?
+## Why Python and JSON?
 
-הפרויקט קטן ומקומי, לכן הוא משתמש ב־Python ובספרייה הסטנדרטית בלבד. JSON שומר את האירועים בפורמט שקל לקרוא ולעבד בלי שרת או מסד נתונים. כל הרשומות משתמשות בזמן ISO 8601 ב־UTC (`Z`), כדי שאפשר יהיה להשוות אירועים ממקורות שונים בלי עמימות של אזורי זמן.
+This is a small, local project, so it uses Python and only the standard library. JSON keeps the events easy to read and process without a server or database. All records use ISO 8601 timestamps in UTC (`Z`), so events from different sources can be compared without time zone ambiguity.
 
-## מבנה
+## Project structure
 
-- `data/incidents/payment-api.json` — תרחיש תקלה דטרמיניסטי שמכיל לוגים, מדדים ואירוע פריסה.
-- `src/ai_sre_copilot/timeline.py` — טעינת התרחיש, בדיקת המבנה והצגת ציר זמן ממוין.
-- `tests/test_timeline.py` — בדיקות לפורמט הזמנים ולסדר האירועים.
+- `data/incidents/payment-api.json` — a deterministic incident scenario containing logs, metrics, and a deployment event.
+- `src/ai_sre_copilot/timeline.py` — loads and validates the scenario, then displays its events in chronological order.
+- `tests/test_timeline.py` — checks timestamp formatting and event ordering.
 
-## הפעלה
+## Run
 
-נדרשת Python 3.10 ומעלה. מתוך תיקיית המאגר:
+Python 3.10 or later is required. From the repository directory, run:
 
 ```sh
 python3 -m src.ai_sre_copilot.timeline
 ```
 
-## בדיקות
+## Tests
 
 ```sh
 python3 -m unittest discover -s tests -v
 ```
 
-הבדיקה מוודאת שכל אירוע כולל זמן UTC תקין, שיש בתרחיש לוגים, מדדים ופריסה, ושסדר האירועים בציר הזמן אינו יורד בזמן.
+The tests verify that each event has a valid UTC timestamp, that the scenario includes logs, metrics, and a deployment, and that the timeline is in chronological order.
 
-## התרחיש
+## Scenario
 
-השירות `payment-api` מקבל פריסה ב־12:04:30 UTC. לאחריה שיעור השגיאות עולה והשהיה חוצה את סף ההתראה. האירועים סינתטיים וקבועים, כך שאותה הרצה מציגה תמיד את אותן ראיות.
+The `payment-api` service is deployed at 12:04:30 UTC. After the deployment, the error rate rises and latency increases. The events are synthetic and fixed, so every run shows the same evidence.
 
-## הצעד הבא
+## Next step
 
-להוסיף פורמט אחיד למקורות נתונים נפרדים, ולבנות שכבת ניתוח שמסבירה קשרי זמן בין פריסה, מדדים ולוגים. אפשר להשאיר את המערכת לקריאה בלבד גם כאשר יתווסף רכיב AI.
+Add a consistent format for separate data sources, then build an analysis layer that explains the timing relationships among deployments, metrics, and logs. The system can remain read-only when an AI component is added later.
