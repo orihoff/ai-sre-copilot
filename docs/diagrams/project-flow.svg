@@ -1,25 +1,25 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1100" height="340" viewBox="0 0 1100 340" role="img" aria-labelledby="title desc">
-  <title id="title">AI SRE Copilot project flow</title>
-  <desc id="desc">A deterministic JSON incident is validated and sorted by the timeline module, then printed. Automated tests check the evidence types, UTC timestamps, and chronological order.</desc>
+  <title id="title">AI SRE Copilot multi-entity project flow</title>
+  <desc id="desc">A JSON scenario describes an application, services, components, dependencies, and evidence events. The loader validates entities, references, and UTC timestamps. Events from all entities are sorted and printed as one timeline. Tests check event types, timestamps, and order.</desc>
   <defs>
     <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#52657a"/></marker>
     <style>
-      .title{font:700 22px Arial,sans-serif;fill:#162b46}.head{font:700 17px Arial,sans-serif;fill:#162b46}.body{font:14px Arial,sans-serif;fill:#34465e}.test{font:700 15px Arial,sans-serif;fill:#245b50}.testbody{font:14px Arial,sans-serif;fill:#34465e}
+      .title{font:700 22px Arial,sans-serif;fill:#162b46}.head{font:700 16px Arial,sans-serif;fill:#162b46}.body{font:14px Arial,sans-serif;fill:#34465e}.test{font:700 15px Arial,sans-serif;fill:#245b50}.testbody{font:14px Arial,sans-serif;fill:#34465e}
     </style>
   </defs>
   <rect width="1100" height="340" rx="18" fill="#f6f8fb"/>
-  <text x="36" y="42" class="title">Current project flow</text>
+  <text x="36" y="42" class="title">Multi-entity incident workflow</text>
   <rect x="36" y="86" width="230" height="126" rx="14" fill="#e8f1ff" stroke="#5b83bd" stroke-width="2"/>
-  <text x="58" y="119" class="head">Synthetic scenario</text><text x="58" y="148" class="body">payment-api.json</text><text x="58" y="174" class="body">Logs · metrics · deployment</text>
+  <text x="58" y="119" class="head">Scenario JSON</text><text x="58" y="148" class="body">Application · entities</text><text x="58" y="174" class="body">Dependencies · events</text>
   <path d="M266 149 H326" stroke="#52657a" stroke-width="3" marker-end="url(#arrow)"/>
   <rect x="336" y="86" width="230" height="126" rx="14" fill="#e9f7f3" stroke="#58a08b" stroke-width="2"/>
-  <text x="358" y="119" class="head">Load and validate</text><text x="358" y="148" class="body">Check event types</text><text x="358" y="174" class="body">Parse UTC timestamps</text>
+  <text x="358" y="119" class="head">Validate model</text><text x="358" y="148" class="body">Entity and dependency IDs</text><text x="358" y="174" class="body">Event references · UTC time</text>
   <path d="M566 149 H626" stroke="#52657a" stroke-width="3" marker-end="url(#arrow)"/>
   <rect x="636" y="86" width="208" height="126" rx="14" fill="#fff3df" stroke="#d99a3c" stroke-width="2"/>
-  <text x="658" y="119" class="head">Order events</text><text x="658" y="148" class="body">Sort by timestamp</text><text x="658" y="174" class="body">Keep original evidence</text>
+  <text x="658" y="119" class="head">Combine evidence</text><text x="658" y="148" class="body">Across all entities</text><text x="658" y="174" class="body">Order by timestamp</text>
   <path d="M844 149 H904" stroke="#52657a" stroke-width="3" marker-end="url(#arrow)"/>
   <rect x="914" y="86" width="150" height="126" rx="14" fill="#f0ebff" stroke="#8a70bf" stroke-width="2"/>
-  <text x="936" y="119" class="head">Print</text><text x="936" y="148" class="body">Readable</text><text x="936" y="174" class="body">timeline</text>
+  <text x="936" y="119" class="head">Print</text><text x="936" y="148" class="body">Entity-labeled</text><text x="936" y="174" class="body">timeline</text>
   <rect x="226" y="250" width="650" height="60" rx="12" fill="#e9f7f3" stroke="#58a08b" stroke-width="2" stroke-dasharray="7 5"/>
   <text x="250" y="276" class="test">Automated tests</text><text x="410" y="276" class="testbody">Evidence types · UTC timestamps · chronological output</text>
   <path d="M451 212 V240" stroke="#58a08b" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#arrow)"/>

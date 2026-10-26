@@ -1,10 +1,42 @@
 {
-  "scenario": "payment-api-elevated-latency",
-  "service": "payment-api",
+  "scenario": "checkout-platform-payment-errors",
+  "application": {
+    "id": "checkout-platform",
+    "name": "Checkout Platform"
+  },
+  "entities": [
+    {
+      "id": "payment-api",
+      "name": "payment-api",
+      "kind": "service",
+      "depends_on": ["inventory-api", "orders-db"]
+    },
+    {
+      "id": "inventory-api",
+      "name": "inventory-api",
+      "kind": "service",
+      "depends_on": ["inventory-db"]
+    },
+    {
+      "id": "orders-db",
+      "name": "orders-db",
+      "kind": "component",
+      "component_type": "database",
+      "depends_on": []
+    },
+    {
+      "id": "inventory-db",
+      "name": "inventory-db",
+      "kind": "component",
+      "component_type": "database",
+      "depends_on": []
+    }
+  ],
   "events": [
     {
       "timestamp": "2026-10-20T12:03:00Z",
       "type": "metric",
+      "entity_id": "payment-api",
       "name": "http_5xx_rate",
       "value": 0.2,
       "unit": "percent"
@@ -12,6 +44,7 @@
     {
       "timestamp": "2026-10-20T12:04:30Z",
       "type": "deployment",
+      "entity_id": "payment-api",
       "version": "1.8.2",
       "environment": "production",
       "actor": "release-bot"
@@ -19,13 +52,23 @@
     {
       "timestamp": "2026-10-20T12:05:00Z",
       "type": "log",
+      "entity_id": "payment-api",
       "severity": "error",
       "message": "upstream inventory request timed out",
       "trace_id": "trace-0001"
     },
     {
+      "timestamp": "2026-10-20T12:05:05Z",
+      "type": "metric",
+      "entity_id": "inventory-api",
+      "name": "p95_latency",
+      "value": 2250,
+      "unit": "ms"
+    },
+    {
       "timestamp": "2026-10-20T12:05:10Z",
       "type": "metric",
+      "entity_id": "payment-api",
       "name": "http_5xx_rate",
       "value": 8.4,
       "unit": "percent"
@@ -33,6 +76,7 @@
     {
       "timestamp": "2026-10-20T12:05:20Z",
       "type": "metric",
+      "entity_id": "payment-api",
       "name": "p95_latency",
       "value": 2400,
       "unit": "ms"
@@ -40,6 +84,7 @@
     {
       "timestamp": "2026-10-20T12:05:30Z",
       "type": "log",
+      "entity_id": "payment-api",
       "severity": "error",
       "message": "payment request failed after retry limit",
       "trace_id": "trace-0002"
