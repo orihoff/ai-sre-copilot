@@ -1,0 +1,21 @@
+<mxfile host="app.diagrams.net" modified="2026-10-26T14:00:00.000Z" agent="OpenAI" version="24.7.17" type="device">
+  <diagram id="incident-timeline" name="Incident timeline">
+    <mxGraphModel dx="1200" dy="370" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="370" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/><mxCell id="1" parent="0"/>
+        <mxCell id="baseline" value="12:03:00&#xa;METRIC · BASELINE&#xa;&#xa;http_5xx_rate&#xa;0.2 percent" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8f1ff;strokeColor=#5b83bd;fontSize=14;" vertex="1" parent="1"><mxGeometry x="28" y="90" width="164" height="206" as="geometry"/></mxCell>
+        <mxCell id="deploy" value="12:04:30&#xa;DEPLOYMENT&#xa;&#xa;Version 1.8.2&#xa;production" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0ebff;strokeColor=#8a70bf;fontSize=14;" vertex="1" parent="1"><mxGeometry x="224" y="90" width="164" height="206" as="geometry"/></mxCell>
+        <mxCell id="timeout" value="12:05:00&#xa;ERROR LOG&#xa;&#xa;Inventory request&#xa;timed out" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff0ee;strokeColor=#d6786d;fontSize=14;" vertex="1" parent="1"><mxGeometry x="420" y="90" width="164" height="206" as="geometry"/></mxCell>
+        <mxCell id="errors" value="12:05:10&#xa;METRIC&#xa;&#xa;http_5xx_rate&#xa;rises to 8.4%" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8f1ff;strokeColor=#5b83bd;fontSize=14;" vertex="1" parent="1"><mxGeometry x="616" y="90" width="164" height="206" as="geometry"/></mxCell>
+        <mxCell id="latency" value="12:05:20&#xa;METRIC&#xa;&#xa;p95 latency&#xa;2400 ms" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8f1ff;strokeColor=#5b83bd;fontSize=14;" vertex="1" parent="1"><mxGeometry x="812" y="90" width="164" height="206" as="geometry"/></mxCell>
+        <mxCell id="failed-payment" value="12:05:30&#xa;ERROR LOG&#xa;&#xa;Payment failed&#xa;after retry limit" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff0ee;strokeColor=#d6786d;fontSize=14;" vertex="1" parent="1"><mxGeometry x="1008" y="90" width="164" height="206" as="geometry"/></mxCell>
+        <mxCell id="e1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#68778a;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="baseline" target="deploy"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#68778a;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="deploy" target="timeout"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#68778a;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="timeout" target="errors"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#68778a;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="errors" target="latency"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#68778a;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="latency" target="failed-payment"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="note" value="Timing is evidence to investigate; it does not prove the deployment caused the incident." style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=13;fontColor=#64748b;" vertex="1" parent="1"><mxGeometry x="32" y="325" width="1100" height="24" as="geometry"/></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

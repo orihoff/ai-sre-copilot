@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="370" viewBox="0 0 1200 370" role="img" aria-labelledby="title desc">
+  <title id="title">payment-api synthetic incident timeline</title>
+  <desc id="desc">At 12:03 the 5xx rate is 0.2 percent. Version 1.8.2 deploys at 12:04:30. An inventory timeout is logged at 12:05. The 5xx rate rises to 8.4 percent at 12:05:10, p95 latency reaches 2400 milliseconds at 12:05:20, and a payment request fails at 12:05:30.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#68778a"/></marker>
+    <style>
+      .title{font:700 22px Arial,sans-serif;fill:#162b46}.time{font:700 14px Arial,sans-serif;fill:#253952}.kind{font:700 12px Arial,sans-serif;letter-spacing:.5px}.body{font:14px Arial,sans-serif;fill:#34465e}.note{font:13px Arial,sans-serif;fill:#64748b}
+    </style>
+  </defs>
+  <rect width="1200" height="370" rx="18" fill="#f6f8fb"/>
+  <text x="32" y="42" class="title">payment-api · incident evidence (UTC)</text>
+  <path d="M72 190 H1128" stroke="#68778a" stroke-width="3" marker-end="url(#arrow)"/>
+  <g transform="translate(28 90)"><rect width="164" height="206" rx="14" fill="#e8f1ff" stroke="#5b83bd" stroke-width="2"/><text x="14" y="28" class="time">12:03:00</text><text x="14" y="54" class="kind" fill="#426da8">METRIC · BASELINE</text><text x="14" y="91" class="body"><tspan x="14" dy="0">http_5xx_rate</tspan><tspan x="14" dy="23">0.2 percent</tspan></text></g>
+  <g transform="translate(224 90)"><rect width="164" height="206" rx="14" fill="#f0ebff" stroke="#8a70bf" stroke-width="2"/><text x="14" y="28" class="time">12:04:30</text><text x="14" y="54" class="kind" fill="#7256a5">DEPLOYMENT</text><text x="14" y="91" class="body"><tspan x="14" dy="0">Version 1.8.2</tspan><tspan x="14" dy="23">production</tspan></text></g>
+  <g transform="translate(420 90)"><rect width="164" height="206" rx="14" fill="#fff0ee" stroke="#d6786d" stroke-width="2"/><text x="14" y="28" class="time">12:05:00</text><text x="14" y="54" class="kind" fill="#b55248">ERROR LOG</text><text x="14" y="91" class="body"><tspan x="14" dy="0">Inventory</tspan><tspan x="14" dy="22">request timed</tspan><tspan x="14" dy="22">out</tspan></text></g>
+  <g transform="translate(616 90)"><rect width="164" height="206" rx="14" fill="#e8f1ff" stroke="#5b83bd" stroke-width="2"/><text x="14" y="28" class="time">12:05:10</text><text x="14" y="54" class="kind" fill="#426da8">METRIC</text><text x="14" y="91" class="body"><tspan x="14" dy="0">http_5xx_rate</tspan><tspan x="14" dy="23">rises to 8.4%</tspan></text></g>
+  <g transform="translate(812 90)"><rect width="164" height="206" rx="14" fill="#e8f1ff" stroke="#5b83bd" stroke-width="2"/><text x="14" y="28" class="time">12:05:20</text><text x="14" y="54" class="kind" fill="#426da8">METRIC</text><text x="14" y="91" class="body"><tspan x="14" dy="0">p95 latency</tspan><tspan x="14" dy="23">2400 ms</tspan></text></g>
+  <g transform="translate(1008 90)"><rect width="164" height="206" rx="14" fill="#fff0ee" stroke="#d6786d" stroke-width="2"/><text x="14" y="28" class="time">12:05:30</text><text x="14" y="54" class="kind" fill="#b55248">ERROR LOG</text><text x="14" y="91" class="body"><tspan x="14" dy="0">Payment failed</tspan><tspan x="14" dy="22">after retry limit</tspan></text></g>
+  <text x="32" y="340" class="note">A temporal sequence is evidence to investigate; it does not by itself prove that the deployment caused the incident.</text>
+</svg>

@@ -1,0 +1,19 @@
+<mxfile host="app.diagrams.net" modified="2026-10-26T14:00:00.000Z" agent="OpenAI" version="24.7.17" type="device">
+  <diagram id="project-flow" name="Project flow">
+    <mxGraphModel dx="1100" dy="340" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="340" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/><mxCell id="1" parent="0"/>
+        <mxCell id="scenario" value="Synthetic scenario&#xa;payment-api.json&#xa;Logs · metrics · deployment" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8f1ff;strokeColor=#5b83bd;fontSize=16;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="36" y="86" width="230" height="126" as="geometry"/></mxCell>
+        <mxCell id="validate" value="Load and validate&#xa;Check event types&#xa;Parse UTC timestamps" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e9f7f3;strokeColor=#58a08b;fontSize=16;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="336" y="86" width="230" height="126" as="geometry"/></mxCell>
+        <mxCell id="sort" value="Order events&#xa;Sort by timestamp&#xa;Keep original evidence" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff3df;strokeColor=#d99a3c;fontSize=16;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="636" y="86" width="208" height="126" as="geometry"/></mxCell>
+        <mxCell id="print" value="Print&#xa;Readable timeline" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0ebff;strokeColor=#8a70bf;fontSize=16;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="914" y="86" width="150" height="126" as="geometry"/></mxCell>
+        <mxCell id="tests" value="Automated tests&#xa;Evidence types · UTC timestamps · chronological output" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e9f7f3;strokeColor=#58a08b;dashed=1;fontSize=15;" vertex="1" parent="1"><mxGeometry x="226" y="250" width="650" height="60" as="geometry"/></mxCell>
+        <mxCell id="e1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#52657a;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="scenario" target="validate"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#52657a;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="validate" target="sort"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#52657a;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="sort" target="print"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;strokeColor=#58a08b;endArrow=block;endFill=1;" edge="1" parent="1" source="validate" target="tests"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;strokeColor=#58a08b;endArrow=block;endFill=1;" edge="1" parent="1" source="sort" target="tests"><mxGeometry relative="1" as="geometry"/></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
