@@ -34,14 +34,17 @@
   ],
   "events": [
     {
+      "id": "payment-5xx-baseline",
       "timestamp": "2026-10-20T12:03:00Z",
       "type": "metric",
       "entity_id": "payment-api",
       "name": "http_5xx_rate",
       "value": 0.2,
-      "unit": "percent"
+      "unit": "percent",
+      "direction": "higher_is_worse"
     },
     {
+      "id": "payment-deploy-1-8-2",
       "timestamp": "2026-10-20T12:04:30Z",
       "type": "deployment",
       "entity_id": "payment-api",
@@ -50,38 +53,67 @@
       "actor": "release-bot"
     },
     {
+      "id": "payment-inventory-timeout",
       "timestamp": "2026-10-20T12:05:00Z",
       "type": "log",
       "entity_id": "payment-api",
       "severity": "error",
       "message": "upstream inventory request timed out",
-      "trace_id": "trace-0001"
+      "trace_id": "trace-0001",
+      "related_entity_id": "inventory-api"
     },
     {
+      "id": "inventory-latency-baseline",
+      "timestamp": "2026-10-20T12:04:45Z",
+      "type": "metric",
+      "entity_id": "inventory-api",
+      "name": "p95_latency",
+      "value": 85,
+      "unit": "ms",
+      "direction": "higher_is_worse"
+    },
+    {
+      "id": "inventory-latency-high",
       "timestamp": "2026-10-20T12:05:05Z",
       "type": "metric",
       "entity_id": "inventory-api",
       "name": "p95_latency",
       "value": 2250,
-      "unit": "ms"
+      "unit": "ms",
+      "direction": "higher_is_worse"
     },
     {
+      "id": "payment-5xx-high",
       "timestamp": "2026-10-20T12:05:10Z",
       "type": "metric",
       "entity_id": "payment-api",
       "name": "http_5xx_rate",
       "value": 8.4,
-      "unit": "percent"
+      "unit": "percent",
+      "direction": "higher_is_worse"
     },
     {
+      "id": "payment-latency-baseline",
+      "timestamp": "2026-10-20T12:04:20Z",
+      "type": "metric",
+      "entity_id": "payment-api",
+      "name": "p95_latency",
+      "value": 180,
+      "unit": "ms",
+      "direction": "higher_is_worse"
+    },
+    {
+      "id": "payment-latency-high",
       "timestamp": "2026-10-20T12:05:20Z",
       "type": "metric",
       "entity_id": "payment-api",
       "name": "p95_latency",
       "value": 2400,
-      "unit": "ms"
+      "unit": "ms",
+      "direction": "higher_is_worse"
     },
     {
+      "id": "payment-retry-failure",
       "timestamp": "2026-10-20T12:05:30Z",
       "type": "log",
       "entity_id": "payment-api",

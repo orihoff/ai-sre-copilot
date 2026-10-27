@@ -74,14 +74,24 @@ def validate_scenario(scenario: dict[str, Any]) -> None:
     events = scenario.get("events")
     if not isinstance(events, list) or not events:
         raise ValueError("scenario must contain at least one event")
+    event_ids: set[str] = set()
     for event in events:
         if not isinstance(event, dict):
             raise ValueError("each event must be an object")
+        event_id = event.get("id")
+        if not isinstance(event_id, str) or not event_id.strip():
+            raise ValueError("each event must include a non-empty id")
+        if event_id in event_ids:
+            raise ValueError(f"duplicate event id: {event_id}")
+        event_ids.add(event_id)
         event_type = event.get("type")
         if event_type not in EVENT_TYPES:
             raise ValueError(f"unsupported event type: {event_type}")
         if event.get("entity_id") not in entities_by_id:
             raise ValueError(f"event references unknown entity: {event.get('entity_id')}")
+        related_entity_id = event.get("related_entity_id")
+        if related_entity_id is not None and related_entity_id not in entities_by_id:
+            raise ValueError(f"event references unknown related entity: {related_entity_id}")
         parse_timestamp(event.get("timestamp"))
     if {event["type"] for event in events} != EVENT_TYPES:
         raise ValueError("scenario must contain log, metric, and deployment events")
@@ -110,6 +120,13 @@ def main() -> None:
         default=SCENARIO_PATH,
         help=f"path to a scenario JSON file (default: {SCENARIO_PATH.name})",
     )
+    parser.add_argument(
+        "--correlation-window",
+        type=int,
+        default=300,
+        metavar="SECONDS",
+        help="maximum time gap used by correlation rules (default: 300)",
+    )
     args = parser.parse_args()
 
     scenario = load_scenario(args.scenario)
@@ -126,8 +143,18 @@ def main() -> None:
             summary = f"{summary}={event['value']} {event.get('unit', '')}".rstrip()
         print(
             f"{event['timestamp']}  {event['type']:<10} "
-            f"{entity_name}: {summary}"
+            f"{entity_name} [{event['id']}]: {summary}"
         )
+
+    from .correlation import correlate_evidence
+
+    findings = correlate_evidence(scenario, window_seconds=args.correlation_window)
+    print("\nEvidence correlations (temporal associations, not proof of cause):")
+    if not findings:
+        print("  No correlations found for the enabled rules.")
+    for finding in findings:
+        print(f"  [{finding['rule']}] {finding['summary']}")
+        print(f"    Evidence event IDs: {' -> '.join(finding['evidence_event_ids'])}")
 
 
 if __name__ == "__main__":
